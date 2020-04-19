@@ -1,0 +1,40 @@
+#!/bin/bash
+function hello(){
+  for NAME in $@
+  do
+    echo "hello $NAME"
+  done
+  echo "first function"
+  hello2 dog
+}
+
+hello2(){
+  echo "hello $1"
+}
+
+hello jake jason ryan
+hello2 rocket
+
+
+### by default all variable are global, but they need to be declared beforehand.
+my_fuction() {
+  GLOBAL_VAR=1
+}
+
+echo $GLOBAL_VAR
+my_fuction
+echo $GLOBAL_VAR
+
+
+# exit status , local  variable
+hello2(){
+  local HOST="google.com"
+  ping -c 1 $HOST
+  return 100
+  #   return 100 or [you can pass custom return value using return command]
+  #  exit 100 will end the script and return 100
+}
+hello2
+echo $?
+
+

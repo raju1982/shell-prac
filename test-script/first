@@ -1,0 +1,68 @@
+#!/bin/bash
+
+MY_SHELL="Bash"
+echo "I am ${MY_SHELL}ing"
+
+#assign command output to a variable
+SERVER_NAME=$(hostname)
+echo "server:- $SERVER_NAME"
+
+SERVER_NAME_1=`hostname`
+echo "server:- $SERVER_NAME_1"
+
+
+#if block with conditional statement
+if [ "$SERVER_NAME" = INTUL1732d2ac99 ]
+then
+  echo "server is same"
+elif [ "$SERVER_NAME" = "$SERVER_NAME_1" ]
+then
+  echo "dance"
+else
+  echo "run"
+fi
+
+colors="red green blue"
+
+#for loop
+for COLOR in $colors
+do
+  echo "COLOR: $COLOR"
+done
+
+
+#############
+##### usuage : ./first ten 10
+#############
+
+
+#script input parameters
+echo "first param : $1"
+echo "second param : $2"
+
+
+#script prompt
+#read -p "what is your name: " name
+#echo "hello $name"
+
+
+#separate commands with semicolon
+echo "one " ; echo "two "
+
+
+HOST="google.com"
+# checking exit status
+ping -c 1 $HOST && echo "$HOST is reachable"
+
+
+# checking exit status
+ping -c 1 $HOST
+
+if [ "$?" -eq "0" ]
+then
+  echo "$HOST reachable"
+  exit 0
+else
+  echo "$HOST unreachable"
+  exit 1
+fi

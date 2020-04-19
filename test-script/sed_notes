@@ -1,0 +1,43 @@
+sed 's/search-pattern/replacement-string/flags' fileName
+flags ->
+i (case insensitive match)
+g (global replacement, all search pattern in each line)
+2 (replace second matched pattern in each line)
+<above command do not change the file>
+
+
+sed -i 's/search-pattern/replacement-string/flags' fileName
+here <i> stand for in place edit (file will be changed)
+
+
+sed 's/search-pattern/replacement-string/gw result.txt' fileName
+<result.txt> will have updated text
+
+
+cat like.txt | sed 's/my wife/sed/g'  <is equal to>  's/my wife/sed/g'  like.txt
+
+echo "/home/jason" | sed 's/\/home\/jason/\/export\/user/'
+
+echo "/home/jason" | sed 's#/home/jason#/export/user#'
+
+sed '/This/d' love.txt -> delete line matching with 'This' pattern
+
+sed '/^#/d' config -> '#' is immediately after beginning(^)
+
+sed '/^$/d' config -> end of line($) is immediately after beginning(^)
+
+sed '/^#/d ; /^$/d ; s/my wife/sed/g' like.txt  -> multiple sed commands getting executed together
+
+sed -f script.sed like.txt  ->  script.sed will have sed commands
+
+sed '2 s/apache/httpd/' like.txt  -> sed command will execute only against line 2 of file.
+
+
+regular expression to match an address.
+sed '/group/ s/apache/httpd/' like.txt  -> sed command will execute only against line which has group word.
+
+sed '1,3 s/apache/httpd/' like.txt  -> sed command will execute only against line 1 through 3.
+
+sed '/#user/,/^$/ s/apache/httpd/' like.txt
+
+

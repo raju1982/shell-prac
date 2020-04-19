@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#wildcard usage
+for FILE in *
+do
+    echo "file $FILE"
+done
+
+#case statement
+case "$1" in
+  [yY]|[yY][eE][sS])
+    echo "yes"
+    ;;
+  [nN]|[nN][oO])
+    echo "no"
+    ;;
+  *)
+    echo "Usage : yes|no" ; exit 1
+    ;;
+esac
+
