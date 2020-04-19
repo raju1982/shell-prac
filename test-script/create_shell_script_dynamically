@@ -1,0 +1,9 @@
+FILE="deploy_ingestor_.sh"
+cat <<'EOM' >$FILE
+#!/bin/bash
+# download necessary jars
+echo "running the flink job command"
+echo "/dev/shm/secrets/profile-flinkingestor_yarnApplicationName_environment.properties"
+echo $dataSource
+echo "nohup flink run -m yarn-cluster -ynm yarnJobName -ytm taskManagerMemory -ys numberOfSlots -yn numberOfNodes -c com.intuit.platform.profile.flink.jobs.applicationClass /emr/instance-controller/lib/bootstrap-actions/flinkJar /dev/shm/secrets/profile-flinkingestor_yarnApplicationName_environment.properties dataSource notificationNames >/dev/null 2>&1 &"
+EOM
